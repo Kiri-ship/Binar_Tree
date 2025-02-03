@@ -33,8 +33,6 @@ for a in range(interation):
     Arr = list(itertools.chain(*Arr))
 
 
-#print(Arr)
-
 
 
 angle = 120
@@ -43,7 +41,8 @@ stac_angle = []
 
 stic = 8
 
-speed(0)
+# for draw speed(0)
+tracer(0, 0) 
 up()
 sety(-200)
 setx(-200)
@@ -70,5 +69,6 @@ for g in range(len(Arr)):
     else:
         pass
         
+update()
 
 mainloop()

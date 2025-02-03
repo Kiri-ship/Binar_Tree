@@ -32,8 +32,6 @@ for a in range(interation):
     Arr = list(itertools.chain(*Arr))
 
 
-#print(Arr)
-
 
 angle = 90
 stac_pos = []
@@ -41,14 +39,12 @@ stac_angle = []
 
 stic = 2
 
-speed(0)
-#up()
-#sety(-300)
-#left(90)
-hideturtle()
-#down()
+# for draw speed(0)
+tracer(0, 0)
 
-#forward(stic)
+hideturtle()
+
+
 for g in range(len(Arr)):
     if Arr[g] == "":
         pass
@@ -67,6 +63,8 @@ for g in range(len(Arr)):
 
     else:
         pass
+
+update()
         
 
 mainloop()

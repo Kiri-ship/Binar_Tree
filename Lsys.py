@@ -52,7 +52,6 @@ class Pifagor_tree(Lsys):
 
             self.Arr = list(itertools.chain(*self.Arr))
 
-        #print(self.Arr)
         return self.Arr
 
 
@@ -65,7 +64,8 @@ class Pifagor_tree(Lsys):
         stic = 2
         leaf = 3
 
-        speed(0)
+        # for draw speed(0)
+        tracer(0, 0)
         up()
         sety(-300)
         left(90)
@@ -95,6 +95,8 @@ class Pifagor_tree(Lsys):
                 setheading(stac_angle[-1]) 
                 del stac_angle[-1]
                 right(angle)
+
+        update()
 
         mainloop()
 
@@ -145,7 +147,8 @@ class Dragon_Line(Lsys):
 
         stic = 5
 
-        speed(0)
+        # for draw speed(0)
+        tracer(0, 0)
         hideturtle()
 
         for g in range(len(Arr)):
@@ -167,7 +170,7 @@ class Dragon_Line(Lsys):
             else:
                 pass
         
-
+        update()
         mainloop()
 
 
@@ -220,7 +223,8 @@ class Serpinsky_treangle(Lsys):
 
         stic = 8
 
-        speed(0)
+        # for draw speed(0)
+        tracer(0, 0)
         up()
         sety(-200)
         setx(-200)
@@ -247,5 +251,5 @@ class Serpinsky_treangle(Lsys):
             else:
                 pass
         
-
+        update()
         mainloop()

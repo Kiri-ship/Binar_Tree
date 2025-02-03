@@ -32,9 +32,6 @@ for a in range(interation):
 
 
 
-#print(Arr)
-
-
 angle = 45
 stac_pos = []
 stac_angle = []
@@ -42,7 +39,8 @@ stac_angle = []
 stic = 2
 leaf = 3
 
-speed(0)   
+# for draw speed(0)
+tracer(0, 0)  
 up()
 sety(-300)
 left(90)
@@ -72,5 +70,7 @@ for g in range(len(Arr)):
         setheading(stac_angle[-1]) 
         del stac_angle[-1]
         right(angle)
+
+update()
 
 mainloop()
