@@ -1,5 +1,6 @@
 from turtle import *
 import itertools
+import tkinter as tk
 
 
 
@@ -15,6 +16,7 @@ class Lsys:
 
     def Draw(self):
         pass
+
 
 
 

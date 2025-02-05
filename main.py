@@ -1,7 +1,10 @@
 import dearpygui.dearpygui as dpg
+
 from Lsys import Pifagor_tree
 from Lsys import Dragon_Line
 from Lsys import Serpinsky_treangle
+
+from MyTurtle import MyTurtle
 
 BLACK = (0, 0, 0)
 
@@ -39,11 +42,11 @@ def Stop_Callback(sender):
     print("You Cliced Stop!!!")
 
 dpg.create_context()
-dpg.create_viewport(title='L-system Vizualizer', width=600, height=300)
+dpg.create_viewport(title='L-system Vizualizer', width=1100, height=650)
 
 
 
-with dpg.window(label="Setup L-system Vizualizer", width=300, height=300):
+with dpg.window(label="Setup L-system Vizualizer", width=300, height=650):
 
     dpg.add_combo(label="L-system", items=Item_List, tag="combo_box")
     dpg.add_slider_int(label="interations", default_value=1, min_value=1, max_value=8, tag="slider_int")
@@ -53,9 +56,35 @@ with dpg.window(label="Setup L-system Vizualizer", width=300, height=300):
     btn3 = dpg.add_button(label="Stop  ", callback=Stop_Callback)
 
 
+
+
+with dpg.window(label="Draw", width=800, height=650, pos=[300, 0], no_title_bar=True):
+
+    with dpg.drawlist(label="Draw", width=800, height=650):
+
+        Turtle = MyTurtle(50, 50, 0)
+        Turtle.Forward(50)
+        Turtle.Raight(45)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+        Turtle.Left(20)
+        Turtle.Forward(50)
+        Turtle.Forward(50)
+                 
+
+
 dpg.setup_dearpygui()
 dpg.show_viewport()
 dpg.start_dearpygui()
 dpg.destroy_context()
+
+
+ 
+
 
 
