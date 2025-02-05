@@ -4,11 +4,12 @@ import dearpygui.dearpygui as dpg
 
 class MyTurtle:
 
-    def __init__(self, X0, Y0, angle):
+    def __init__(self, X0, Y0, angle, parent):
 
         self.angle = angle
         self.X0 = X0
         self.Y0 = Y0
+        self.parent = parent
         
         
     def Forward(self, lenth):
@@ -16,7 +17,7 @@ class MyTurtle:
         X1 = self.X0 + lenth * math.cos(math.radians(self.angle))
         Y1 = self.Y0 + lenth * math.sin(math.radians(self.angle))
         
-        dpg.draw_line((self.X0, self.Y0), (int(X1), int(Y1)))
+        dpg.draw_line((self.X0, self.Y0), (int(X1), int(Y1)),parent= self.parent)
 
         self.X0 = X1
         self.Y0 = Y1
@@ -46,7 +47,7 @@ class MyTurtle:
 
 
     def Get_Pos(self):
-        Arr = [self.X0, self.Y0]
+        Arr = (self.X0, self.Y0)
         return Arr
 
 

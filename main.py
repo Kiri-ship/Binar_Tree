@@ -16,11 +16,7 @@ def Start_Callback(sender):
     
     
     if dpg.get_value("combo_box") == "Pifagor Tree":
-        interation = dpg.get_value("slider_int")
-        print(interation)
-        Tree = Pifagor_tree(BLACK, interation)
-        String = Tree.Generate_String()
-        Tree.Draw(String)
+       StartDraw()
 
     elif dpg.get_value("combo_box") == "Dragon Line":
         interation = dpg.get_value("slider_int")
@@ -60,21 +56,32 @@ with dpg.window(label="Setup L-system Vizualizer", width=300, height=650):
 
 with dpg.window(label="Draw", width=800, height=650, pos=[300, 0], no_title_bar=True):
 
-    with dpg.drawlist(label="Draw", width=800, height=650):
+    with dpg.drawlist(label="Draw", width=800, height=650, tag="drawlist"):
 
-        Turtle = MyTurtle(50, 50, 0)
-        Turtle.Forward(50)
-        Turtle.Raight(45)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
-        Turtle.Left(20)
-        Turtle.Forward(50)
-        Turtle.Forward(50)
+        dpg.draw_arrow((50, 70), (100, 65), color=(0, 200, 255), thickness=1, size=10)
+        def StartDraw():
+            interation = dpg.get_value("slider_int")
+            print(interation)
+            Tree = Pifagor_tree(BLACK, interation, dpg.get_item_parent("drawlist"))
+            String = Tree.Generate_String()
+            Tree.Draw(String)
+
+        #Turtle = MyTurtle(50, 50, 0)
+        #Turtle.Forward(50)
+        #Turtle.Raight(45)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+        #Turtle.Left(20)
+        #Turtle.Forward(50)
+        #Turtle.Forward(50)
+
+        
+            
                  
 
 
