@@ -1,5 +1,4 @@
 from turtle import *
-from MyTurtle import MyTurtle
 import itertools
 
 
@@ -57,50 +56,48 @@ class Pifagor_tree(Lsys):
         return self.Arr
 
 
-    def Draw(self, Arr):
+    def Draw(self, Arr, turtle_screen):
         
+        t = RawTurtle(turtle_screen)
         angle = 45
         stac_pos = []
         stac_angle = []
 
         stic = 2
         leaf = 3
-        # for draw speed(0)
-        tracer(0, 0)  
-        up()
-        sety(-300)
-        left(90)
-        hideturtle()
-        down()
+
+        t.speed(0)  
+        t.up()
+        t.sety(-300)
+        t.left(90)
+        t.hideturtle()
+        t.down()
 
         for g in range(len(Arr)):
             if Arr[g] == "":
                 pass
 
             elif Arr[g] == "0":
-                forward(leaf)
+                t.forward(leaf)
 
             elif Arr[g] == "1":
-                forward(stic)
+                t.forward(stic)
 
             elif Arr[g] == "[":
-                stac_pos.append(pos())
-                stac_angle.append(heading())
-                left(angle)
+                stac_pos.append(t.pos())
+                stac_angle.append(t.heading())
+                t.left(angle)
         
             elif Arr[g] == "]":
-                up()
-                goto(stac_pos[-1])
-                down()
+                t.up()
+                t.goto(stac_pos[-1])
+                t.down()
                 del stac_pos[-1]
-                setheading(stac_angle[-1]) 
+                t.setheading(stac_angle[-1]) 
                 del stac_angle[-1]
-                right(angle)
+                t.right(angle)
 
-        update()
-
-        mainloop()
-
+        
 
 
 
@@ -142,7 +139,10 @@ class Dragon_Line(Lsys):
         return Arr
     
 
-    def Draw(self, Arr):
+    def Draw(self, Arr, turtle_screen):
+
+        t = RawTurtle(turtle_screen)
+
         angle = 90
         stac_pos = []
         stac_angle = []
@@ -150,30 +150,29 @@ class Dragon_Line(Lsys):
         stic = 5
 
         # for draw speed(0)
-        tracer(0, 0)
-        hideturtle()
+        t.speed(0)
+        t.hideturtle()
 
         for g in range(len(Arr)):
             if Arr[g] == "":
                 pass
 
             elif Arr[g] == "F":
-                forward(stic)
+                t.forward(stic)
 
             elif Arr[g] == "H":
-                forward(stic)
+                t.forward(stic)
 
             elif Arr[g] == "-":
-                left(angle)
+                t.left(angle)
 
             elif Arr[g] == "+":
-                right(angle)
+                t.right(angle)
 
             else:
                 pass
         
-        update()
-        mainloop()
+        
 
 
 
@@ -218,20 +217,22 @@ class Serpinsky_treangle(Lsys):
 
 
 
-    def Draw(self, Arr):
+    def Draw(self, Arr, turtle_screen):
+
+        t = RawTurtle(turtle_screen)
+
         angle = 120
         stac_pos = []
         stac_angle = []
 
         stic = 8
 
-        # for draw speed(0)
-        tracer(0, 0)
-        up()
-        sety(-200)
-        setx(-200)
-        hideturtle()
-        down()
+        t.speed(0)
+        t.up()
+        t.sety(-200)
+        t.setx(-200)
+        t.hideturtle()
+        t.down()
 
 
         for g in range(len(Arr)):
@@ -239,19 +240,17 @@ class Serpinsky_treangle(Lsys):
                 pass
 
             elif Arr[g] == "F":
-                forward(stic)
+                t.forward(stic)
 
             elif Arr[g] == "G":
-                forward(stic)
+                t.forward(stic)
 
             elif Arr[g] == "-":
-                left(angle)
+                t.left(angle)
 
             elif Arr[g] == "+":
-                right(angle)
+                t.right(angle)
 
             else:
                 pass
         
-        update()
-        mainloop()

@@ -2,8 +2,41 @@ import tkinter
 import customtkinter
 import turtle
 
-def button_callback():
-    print("button clicked")
+from Lsys import Pifagor_tree
+from Lsys import Dragon_Line
+from Lsys import Serpinsky_treangle
+
+
+
+BLACK = (0, 0, 0)
+
+
+def button_start_callback():
+    if combobox.get() == "Pifagor tree":
+        interation = int(slider_interation.get())
+        Tree = Pifagor_tree(BLACK, interation)
+        String = Tree.Generate_String()
+        Tree.Draw(String, canvas)
+    
+    elif combobox.get() == "Dragon line":
+        interation = int(slider_interation.get())
+        DragonLine = Dragon_Line(BLACK, interation)
+        String = DragonLine.Generate_String()
+        DragonLine.Draw(String, canvas)
+
+    elif combobox.get() == "Serpynsky's treangle":
+        interation = int(slider_interation.get())
+        Serpinsky = Serpinsky_treangle(BLACK, interation)
+        String = Serpinsky.Generate_String()
+        Serpinsky.Draw(String, canvas)
+
+
+
+def button_restart_callback():
+    print("button restart clicked")
+
+def button_stop_callback():
+    print("button stop clicked")
 
 
 def slider_interation_event(self):
@@ -46,13 +79,13 @@ label_value_interation.grid(row=2, column=4, padx=2)
 
 
 
-button_start = customtkinter.CTkButton(MenuFrame, text="Start", width=70)
+button_start = customtkinter.CTkButton(MenuFrame, text="Start", width=70, command=button_start_callback)
 button_start.grid(row=3,column=0, pady=5, sticky="n")
 
-button_restart = customtkinter.CTkButton(MenuFrame, text="Restart", width=70)
+button_restart = customtkinter.CTkButton(MenuFrame, text="Restart", width=70, command=button_restart_callback)
 button_restart.grid(row=3,column=1, pady=5, sticky="n")
 
-button_stop = customtkinter.CTkButton(MenuFrame, text="Stop", width=70)
+button_stop = customtkinter.CTkButton(MenuFrame, text="Stop", width=70, command=button_stop_callback)
 button_stop.grid(row=3,column=2, pady=5, sticky="n")
 
 app.mainloop()
