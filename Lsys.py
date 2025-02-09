@@ -6,10 +6,9 @@ import itertools
 
 
 class Lsys:
-    def __init__(self, color, interations, parent):
+    def __init__(self, color, interations):
         self.color = color
         self.interations = interations
-        self.parent = parent
 
     def Generate_String(self):
         pass
@@ -23,8 +22,8 @@ class Lsys:
 
 
 class Pifagor_tree(Lsys):
-    def __init__(self, color, interations, parent):
-        super().__init__(color, interations, parent)
+    def __init__(self, color, interations):
+        super().__init__(color, interations)
 
 
 
@@ -59,39 +58,48 @@ class Pifagor_tree(Lsys):
 
 
     def Draw(self, Arr):
-
+        
         angle = 45
         stac_pos = []
         stac_angle = []
 
         stic = 2
         leaf = 3
-
-        Turtl = MyTurtle(400, 650, 90, self.parent)
+        # for draw speed(0)
+        tracer(0, 0)  
+        up()
+        sety(-300)
+        left(90)
+        hideturtle()
+        down()
 
         for g in range(len(Arr)):
             if Arr[g] == "":
                 pass
 
             elif Arr[g] == "0":
-                Turtl.Forward(leaf)
+                forward(leaf)
 
             elif Arr[g] == "1":
-                Turtl.Forward(stic)
+                forward(stic)
 
             elif Arr[g] == "[":
-                stac_pos.append(Turtl.Get_Pos())
-                stac_angle.append(Turtl.Get_Angle())
-                Turtl.Left(angle)
+                stac_pos.append(pos())
+                stac_angle.append(heading())
+                left(angle)
         
             elif Arr[g] == "]":
-                
-                Turtl.Set_Pos(stac_pos[-1])
-                
+                up()
+                goto(stac_pos[-1])
+                down()
                 del stac_pos[-1]
-                Turtl.Set_Angle(stac_angle[-1]) 
+                setheading(stac_angle[-1]) 
                 del stac_angle[-1]
-                Turtl.Left(angle)
+                right(angle)
+
+        update()
+
+        mainloop()
 
 
 

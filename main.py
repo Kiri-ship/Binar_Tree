@@ -4,9 +4,13 @@ from Lsys import Pifagor_tree
 from Lsys import Dragon_Line
 from Lsys import Serpinsky_treangle
 
-from MyTurtle import MyTurtle
-
 BLACK = (0, 0, 0)
+
+
+
+
+#---Menu------------------------------------------------------------------------------------------------------------
+
 
 Item_List = ["Pifagor Tree", "Dragon Line", "Serpinsky's treangle"]
     
@@ -16,7 +20,10 @@ def Start_Callback(sender):
     
     
     if dpg.get_value("combo_box") == "Pifagor Tree":
-       StartDraw()
+        interation = dpg.get_value("slider_int")
+        Tree = Pifagor_tree(BLACK, interation)
+        String = Tree.Generate_String()
+        Tree.Draw(String)
 
     elif dpg.get_value("combo_box") == "Dragon Line":
         interation = dpg.get_value("slider_int")
@@ -37,49 +44,46 @@ def Repeat_Callback(sender):
 def Stop_Callback(sender):
     print("You Cliced Stop!!!")
 
+#---Menu------------------------------------------------------------------------------------------------------------
+
+#---Node-Editor-----------------------------------------------------------------------------------------------------
+
+def add_node(sender, app_data):
+    with dpg.node_editor(label="Node Editor", parent="nod"):
+        with dpg.node(label="node"):
+            with dpg.node_attribute(label="Node A1"):
+                dpg.add_input_float(label="F1", width=150)
+
+#---Node-Editor-----------------------------------------------------------------------------------------------------
+
+
+
+
 dpg.create_context()
-dpg.create_viewport(title='L-system Vizualizer', width=1100, height=650)
+dpg.create_viewport(title='L-system Vizualizer', width=1115, height=690)
 
 
 
-with dpg.window(label="Setup L-system Vizualizer", width=300, height=650):
+with dpg.window(label="Setup L-system Vizualizer", width=300, height=650, no_title_bar=True):
 
     dpg.add_combo(label="L-system", items=Item_List, tag="combo_box")
     dpg.add_slider_int(label="interations", default_value=1, min_value=1, max_value=8, tag="slider_int")
     dpg.add_slider_int(label="angle", default_value=1, min_value=1, max_value=360, tag="angle")
-    btn1 = dpg.add_button(label="Start ", callback=Start_Callback)
-    btn2 = dpg.add_button(label="Repeat", callback=Repeat_Callback)
-    btn3 = dpg.add_button(label="Stop  ", callback=Stop_Callback)
+    dpg.add_button(label="Start ", callback=Start_Callback)
+    dpg.add_button(label="Repeat", callback=Repeat_Callback)
+    dpg.add_button(label="Stop  ", callback=Stop_Callback)
+    dpg.add_button(label="Add Node  ")
 
 
 
 
-with dpg.window(label="Draw", width=800, height=650, pos=[300, 0], no_title_bar=True):
+with dpg.window(label="Draw", width=800, height=650, pos=[300, 0], no_title_bar=True, tag="Draw"):
+    dpg.add_button(label="Add Node", callback=add_node)
 
-    with dpg.drawlist(label="Draw", width=800, height=650, tag="drawlist"):
-
-        dpg.draw_arrow((50, 70), (100, 65), color=(0, 200, 255), thickness=1, size=10)
-        def StartDraw():
-            interation = dpg.get_value("slider_int")
-            print(interation)
-            Tree = Pifagor_tree(BLACK, interation, dpg.get_item_parent("drawlist"))
-            String = Tree.Generate_String()
-            Tree.Draw(String)
-
-        #Turtle = MyTurtle(50, 50, 0)
-        #Turtle.Forward(50)
-        #Turtle.Raight(45)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-        #Turtle.Left(20)
-        #Turtle.Forward(50)
-        #Turtle.Forward(50)
-
+        
+    dpg.add_node_editor(tag="nod")
+        
+        
         
             
                  
