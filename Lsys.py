@@ -5,8 +5,7 @@ import itertools
 
 
 class Lsys:
-    def __init__(self, color, interations):
-        self.color = color
+    def __init__(self, interations):
         self.interations = interations
 
     def Generate_String(self):
@@ -21,8 +20,8 @@ class Lsys:
 
 
 class Pifagor_tree(Lsys):
-    def __init__(self, color, interations):
-        super().__init__(color, interations)
+    def __init__(self, interations):
+        super().__init__(interations)
 
 
 
@@ -56,9 +55,10 @@ class Pifagor_tree(Lsys):
         return self.Arr
 
 
-    def Draw(self, Arr, turtle_screen):
+    def Draw(self, Arr, turtle_screen, color):
         
         t = RawTurtle(turtle_screen)
+        t.pencolor(color)
         angle = 45
         stac_pos = []
         stac_angle = []
@@ -102,8 +102,8 @@ class Pifagor_tree(Lsys):
 
 
 class Dragon_Line(Lsys):
-    def __init__(self, color, interations):
-        super().__init__(color, interations)
+    def __init__(self, interations):
+        super().__init__(interations)
 
 
     def Generate_String(self):
@@ -139,9 +139,10 @@ class Dragon_Line(Lsys):
         return Arr
     
 
-    def Draw(self, Arr, turtle_screen):
+    def Draw(self, Arr, turtle_screen, color):
 
         t = RawTurtle(turtle_screen)
+        t.pencolor(color)
 
         angle = 90
         stac_pos = []
@@ -179,8 +180,8 @@ class Dragon_Line(Lsys):
 
 
 class Serpinsky_treangle(Lsys):
-    def __init__(self, color, interations):
-        super().__init__(color, interations)
+    def __init__(self, interations):
+        super().__init__(interations)
 
 
     def Generate_String(self):
@@ -217,9 +218,10 @@ class Serpinsky_treangle(Lsys):
 
 
 
-    def Draw(self, Arr, turtle_screen):
+    def Draw(self, Arr, turtle_screen, color):
 
         t = RawTurtle(turtle_screen)
+        t.pencolor(color)
 
         angle = 120
         stac_pos = []
